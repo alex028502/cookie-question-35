@@ -384,6 +384,11 @@
           "resolved": "https://registry.npmjs.org/vary/-/vary-1.1.0.tgz"
         }
       }
+    },
+    "jquery": {
+      "version": "3.1.1",
+      "from": "jquery@latest",
+      "resolved": "https://registry.npmjs.org/jquery/-/jquery-3.1.1.tgz"
     }
   }
 }
