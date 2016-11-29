@@ -1,36 +1,30 @@
-var expect = require("chai").expect;
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <link href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" rel="stylesheet" />
+</head>
+<body>
+<div id="mocha"></div>
 
-var server = require('./lib.js');
+<script src="https://cdn.rawgit.com/jquery/jquery/2.1.4/dist/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/Automattic/expect.js/0.3.1/index.js"></script>
+<script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min.js"></script>
 
-//thanks https://github.com/jesstelford/react-testing-mocha-jsdom
-var jsdom = require('jsdom');
-// A super simple DOM ready for React to render into
-// Store this DOM and the window in global scope ready for React to access
-global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
-global.window = document.defaultView; //thanks https://github.com/tmpvar/jsdom/issues/1381
-global.navigator = {userAgent: 'node.js'}; //thanks http://stackoverflow.com/a/37084875/5203563
-
-var $ = require("jquery");
-
-var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-$.ajaxSettings.xhr = function() {
-  return new XMLHttpRequest();
-};
+<script>mocha.setup('bdd')</script>
+<script>
+var expect = chai.expect;
 
 var successResponse;
 var failureResponse;
 
-var PORT = 8084;
-var URL = "http://localhost:" + PORT;
+var URL = "/";
+
+////THIS IS A COPY AND PASTE OF test.js
+////use `npm run compare-tests` to check that they are more or less the same
 
 describe("cookie test page", function () {
-  before(function (next) {
-    server(PORT, function (message) {
-      expect(message).to.include(PORT);
-      next();
-    });
-  });
-
   beforeEach(function (next) {
     $.ajax({
       type: "get",
@@ -41,7 +35,7 @@ describe("cookie test page", function () {
       error: function (a, b, c) {
         throw JSON.stringify([a, b, c]);
       },
-      url: URL + "/clear-cookie.html"
+      url: URL + "clear-cookie.html"
     });
   });
 
@@ -146,3 +140,11 @@ describe("cookie test page", function () {
 
 
 });
+</script>
+<script>
+  mocha.checkLeaks();
+  mocha.globals(['jQuery']);
+  mocha.run();
+</script>
+</body>
+</html>

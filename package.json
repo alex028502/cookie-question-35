@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha test.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "compare-tests": "diff test.html test.js || echo take a look at the above to make sure the two examples are in sync"
   },
   "author": "alex",
   "license": "ISC",

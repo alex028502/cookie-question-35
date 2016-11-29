@@ -16,6 +16,15 @@ module.exports = function (port, callback) {
     res.send(fs.readFileSync(__dirname + "/index.html", "utf-8").replace("{cookiePhrase}", cookiePhrase));
   });
 
+  app.get('/test.html', function (req, res) {
+    res.send(fs.readFileSync(__dirname + "/test.html", "utf-8"));
+  });
+
+  app.get('/clear-cookie.html', function (req, res) {
+    res.clearCookie('test');
+    res.send("cookie cleared");
+  });
+
   app.post('/', function (req, res) {
     if (!req.body.cookie) {
       return res.send("no cookie set");
