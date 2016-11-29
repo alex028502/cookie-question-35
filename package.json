@@ -1,0 +1,25 @@
+{
+  "name": "cookiequestion",
+  "version": "1.0.0",
+  "description": "cookie question",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test.js",
+    "start": "node server.js"
+  },
+  "author": "alex",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "jquery": "^3.1.1"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "jquery": "^3.1.1",
+    "jsdom": "9.8.3",
+    "mocha": "3.2.0",
+    "xmlhttprequest": "^1.8.0"
+  }
+}
